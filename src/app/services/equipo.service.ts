@@ -12,4 +12,10 @@ export class EquipoService {
   traerEquipo(){
     return this.http.get<Equipo>('http://localhost:8080/api/equipos');
   }
+
+  agregarEquipo(dato: Equipo){
+    return this.http.post('http://localhost:8080/api/equipos', dato);
+  }
+
+  
 }
