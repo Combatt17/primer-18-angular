@@ -10,44 +10,43 @@ import { EquipoService } from 'src/app/services/equipo.service';
 })
 export class ConsumoComponent implements OnInit {
 
+  //Contiene los equipos que vengan de la DB
   public equipos: Equipo[]=[];
-  //Crear atributo que maneja el formulario
-  EquipoForm!: FormGroup;
 
-  constructor(private equipoService: EquipoService, private fb: FormBuilder) { }
+  
+
+  constructor(private equipoService: EquipoService ) { }
 
   ngOnInit(): void {
-    //construimos el formulario
-    this.EquipoForm=this.fb.group({
-      id: [''],
-      nombre: ['',Validators.required]
-    })
+    
     this.traerEquipo();
   }
 
+
+  //Ejecuta el método GET del services
   traerEquipo(){
     this.equipoService.traerEquipo().subscribe((respuesta:any) => {
       this.equipos=respuesta;
     })
   }
 
-  enviar(){
-    console.log(this.EquipoForm.status)
-    if(this.EquipoForm.status=="VALID"){
-      this.equipoService.agregarEquipo(this.EquipoForm.value).subscribe((respuesta: any) => {
-        console.log(respuesta)
-        if(respuesta.estado=="true"){
-          this.traerEquipo();
-          this.EquipoForm=this.fb.group({
-            id: [''],
-            nombre: ['']
-          })
-        }
-      })
-    }else{
-      alert("No puede haber campos vacios")
-    }
+  //Ejecuta el método POST del services
+  enviar(body: Equipo){
     
+      this.equipoService.agregarEquipo(body).subscribe((respuesta: any) => {
+        console.log(respuesta)
+        this.traerEquipo();
+      })
   }
+/*
+  editar(dato:Equipo){
+    
+    //Llenado el formulario con los datos seleccionados
+    this.EquipoForm.controls['id'].setValue(dato.id)
+    this.EquipoForm.controls['nombre'].setValue(dato.nombre)
+    
+  }*/
+
+
 
 }

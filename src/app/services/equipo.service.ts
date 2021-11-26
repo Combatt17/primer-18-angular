@@ -14,7 +14,7 @@ export class EquipoService {
   }
 
   agregarEquipo(dato: Equipo){
-    return this.http.post('http://localhost:8080/api/equipos', dato);
+    return this.http.post('http://localhost:8080/api/equipos',dato);
   }
 
   

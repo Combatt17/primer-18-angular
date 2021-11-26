@@ -1,0 +1,13 @@
+<h1>Formulario</h1>
+    <form [formGroup]="EquipoForm" (ngSubmit)="enviar()">
+      <div class="mb-3">
+        <label  class="form-label">ID</label>
+        <input type="text" formControlName="id" placeholder="Ingrese el id" class="form-control">
+      </div>
+      <div class="mb-3">
+        <label  class="form-label">Nombre del equipo</label>
+        <input type="text" formControlName="nombre" placeholder="Ingrese el nombre del equipo" class="form-control" required>
+      </div>
+
+      <button type="submit" class="btn btn-primary">Guardar</button>
+</form>

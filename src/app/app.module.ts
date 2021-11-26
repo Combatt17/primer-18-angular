@@ -6,11 +6,15 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ConsumoComponent } from './equipo/consumo/consumo.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ListarComponent } from './equipo/listar/listar.component';
+import { AgregarComponent } from './equipo/agregar/agregar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ConsumoComponent,
+    ListarComponent,
+    AgregarComponent,
    
   ],
   imports: [

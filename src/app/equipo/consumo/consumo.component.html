@@ -1,35 +1,10 @@
 <div class="flex">
   <div class="contenedor col-3">
-    <h1>Lista de equipos</h1>
-    <table class="table">
-      <thead>
-        <tr>
-          <th scope="col">ID</th>
-          <th scope="col">Nombre</th>
-
-        </tr>
-      </thead>
-      <tbody *ngFor="let equipo of equipos">
-        <tr>
-          <td>{{equipo.id}}</td>
-          <td>{{equipo.nombre}}</td>
-        </tr>
-      </tbody>
-    </table>
+    <!-- Agrego por parametro del array que se encuentra en el componente padre-->
+    <!-- La variable dentro del componente hijo = variable que se va a pasar del componente padre-->
+    <app-listar [entrada]="equipos"></app-listar>
   </div>
   <div class="contenedor">
-    <h1>Formulario</h1>
-    <form [formGroup]="EquipoForm" (ngSubmit)="enviar()">
-      <div class="mb-3">
-        <label  class="form-label">ID</label>
-        <input type="text" formControlName="id" placeholder="Ingrese el id" class="form-control">
-      </div>
-      <div class="mb-3">
-        <label  class="form-label">Nombre del equipo</label>
-        <input type="text" formControlName="nombre" placeholder="Ingrese el nombre del equipo" class="form-control" required>
-      </div>
-
-      <button type="submit" class="btn btn-primary">Guardar</button>
-    </form>
+  <app-agregar (onNuevoEquipo)="enviar( $event )" ></app-agregar>
   </div>
 </div>
